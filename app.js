@@ -11,14 +11,28 @@ request({ url: url, json: true }, (error, response) => {
   // If json:true it automatically parses the response
   //console.log(response.body.currently);
 
-  console.log(
-    response.body.daily.data[0].summary +
-      " It is currently " +
-      response.body.currently.temperature +
-      " degrees out there. There is a " +
-      response.body.currently.precipProbability +
-      "% chance of rain."
-  );
+  // console.log(
+  //   response.body.daily.data[0].summary +
+  //     " It is currently " +
+  //     response.body.currently.temperature +
+  //     " degrees out there. There is a " +
+  //     response.body.currently.precipProbability +
+  //     "% chance of rain."
+  // );
+
+  // Error Handling
+  if (error) {
+    console.log("Unable to connect to the forecast service");
+  } else {
+    console.log(
+      response.body.daily.data[0].summary +
+        " It is currently " +
+        response.body.currently.temperature +
+        " degrees out there. There is a " +
+        response.body.currently.precipProbability +
+        "% chance of rain."
+    );
+  }
 });
 
 // Geocoding
